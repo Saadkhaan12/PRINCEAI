@@ -57,7 +57,7 @@ let infobt = `
 
 *≡ OWNER🧑‍💻*
  _PRINCE GDS_
-▢ https://whatsapp.com/channel/0029VaKNbWkKbYMLb61S1v11
+▢ 
   
 ▢ MY BOT GC LINK.
   https://chat.whatsapp.com/Jo5bmHMAlZpEIp75mKbwxP
