@@ -35,7 +35,7 @@ let handler = async (m, { text }) => {
   }
 
   if (!/text|json/.test(response.headers['content-type'])) {
-    return conn.sendFile(m.chat, url,  'https://whatsapp.com/channel/0029VaKNbWkKbYMLb61S1v11', m);
+    return conn.sendFile(m.chat, url,  '', m);
   }
 
   try {
