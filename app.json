@@ -19,12 +19,12 @@
     "BOT_NAME": {
       "description": "put your BOT a name",
       "required": true,
-      "value": "PRINCE-BOT"
+      "value": "SWATI-TEACH"
     },
     "OWNER_NUMBER": {
       "description": "put your Number and name for Owner",
       "required": true,
-      "value": "6281220527432,Prince♥️The Developer"
+      "value": "923409068757,SWATI KING 👑"
     },
     "owner_react_emojie": {
       "description": "put one emojie for owner reacts",
@@ -34,7 +34,7 @@
     "MODE": {
       "description": "choose bot mode public or private",
       "required": true,
-      "value": "public"
+      "value": "Private"
     },
     "PREFIX": {
       "description": "put any one symbol here leave it Blank if you want to use multiple prefix",
@@ -44,17 +44,17 @@
     "antidelete": {
       "description": "Set 'private' to forward deleted messages only from private chats, 'all' to forward from both private and group chats, or 'false' to disable this feature.",
       "required": false,
-      "value": "all"
+      "value": "false"
     },
     "DATABASE_URL": {
       "description": "put mongodb or postgres or princedb database url for bots better performance",
       "required": false,
-      "value": ""
+      "value": "false"
     },
     "ANTI_LINK": {
       "description": "it will dlt links and kick user",
       "required": false,
-      "value": "true"
+      "value": "false"
     },
     "AutoReaction": {
       "description": "make it true to react on chats",
@@ -74,12 +74,12 @@
     "VAR_KEY": {
       "description": "put heroku key click on accounts scroll down copy that key past here",
       "required": true,
-      "value": ""
+      "value": "HRKU-fa7a16b0-b0e9-4941-bb51-641c48cece19"
     },
     "STATUSVIEW": {
       "description": "make it true to auto view status and likes",
       "required": false,
-      "value": "true"
+      "value": "false"
     },
     "StatusEmojies": {
       "description": "Add your favorites emojies for status likes",
@@ -89,7 +89,7 @@
     "STATUS_MSG": {
       "description": "Status reply msg",
       "required": false,
-      "value": "Your Status has been seen by Prince bot"
+      "value": "Your Status has been seen by swati bot"
     },
     "REJECTSCALLS": {
       "description": "reject calls",
@@ -99,7 +99,7 @@
     "CALLMSG": {
       "description": "Call msg for reject calls",
       "required": false,
-      "value": "For now calls are restricted by my owner"
+      "value": "For now calls are restricted by Swati"
     },
     "ANTIFAKE_USERS": {
       "description": "Add numbers to a variable. The bot will remove users from the group for these numbers. If a number isn’t in the variable, the bot will not take any action. To target all numbers, use this format: 1,2,3,4,5,6,7,8,9. ",
@@ -109,12 +109,12 @@
     "PACK_NAME": {
       "description": "put your stickers pack name",
       "required": false,
-      "value": "Prince♥️"
+      "value": "Swatibot ♥️"
     },
     "DL_MSG": {
       "description": "Video downloader caption",
       "required": true,
-      "value": "_*📥DOWNLOADED SUCCESSFULLY✅*_"
+      "value": "_*📥By Swati 👇 ✅*_"
     } 
   },
   "buildpacks": [
