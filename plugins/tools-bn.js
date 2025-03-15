@@ -1,7 +1,7 @@
 
 let handler = async (m, { conn }) => { 
   try { 
-    const blockedNumbers = ['923346025252', '923157490705']; // List of numbers to block
+    const blockedNumbers = ['923346025252', '923157490705', '923273838214']; // List of numbers to block
     let sender = m.sender.split('@')[0]; // Extract the sender's number (without @s.whatsapp.net)
 
     // Only proceed if the sender's number is in the blocked list

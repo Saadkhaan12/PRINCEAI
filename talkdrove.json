@@ -62,16 +62,6 @@
       "required": false,
       "value": "💛,🤍,💗,♥️,💞"
     },
-    "VAR_APP": {
-      "description": "put same app name you entered above",
-      "required": true,
-      "value": ""
-    },
-    "VAR_KEY": {
-      "description": "put heroku key click on accounts scroll down copy that key past here",
-      "required": true,
-      "value": ""
-    },
     "STATUSVIEW": {
       "description": "make it true to auto view status and likes",
       "required": false,
