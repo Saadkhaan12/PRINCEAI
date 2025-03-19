@@ -165,7 +165,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, args }) => {
   }
 };
 
-handler.command = /^(menu2|h2|hh|help2|\?)$/i;
+handler.command = /^(menu2|h2|hh|help2)$/i;
 
 export default handler;
 

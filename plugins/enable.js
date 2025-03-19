@@ -57,6 +57,8 @@ throw false
 bot.testbot = isEnable
 break	
 
+		  
+
 		  case 'oreact':
 		  case 'ownerreacts':
 	case 'ownerreact':
@@ -307,6 +309,19 @@ break
         }
       }
       chat.testf = isEnable
+      break
+
+
+		  case 'antibot':
+    case 'botanti':
+    case 'nobot':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
+        }
+      }
+      chat.antiBot = isEnable
       break
 
 		  case 'approve':
@@ -594,7 +609,13 @@ default:
      if (!/[01]/.test(command)) return m.reply(`
 ━━━━━━━━━━━━━【 *⚙️ BOT SETTINGS* ⚙️ 】━━━━━━━━━━━━━
                 *✨ Toggle Features ✨*
+━━━━━━━━━━━━━━【 *EXAMPLES* 】━━━━━━━━━━━━━━
 
+   To toggle features, use *\`${usedPrefix}on\`* or *\`${usedPrefix}off\`*:
+
+   *\`${usedPrefix}on welcome\`*  
+   *\`${usedPrefix}off welcome\`*
+   
 ╭━━━━━━━━━━━━━━【 *👑 OWNER CMD* 】━━━━━━━━━━━━━━╮
 
 🔒 *\`${usedPrefix + command} public\`*  
@@ -647,6 +668,9 @@ default:
 
 🚫 *\`${usedPrefix + command} antibotclone\`*  
    ➤ Remove cloned bots from groups
+
+⚠️ *\`${usedPrefix + command} antibot\`*  
+   ➤ Remove bots from groups
 
 🔐 *\`${usedPrefix + command} restrict\`*  
    ➤ Restrict features like antilinkall
@@ -713,8 +737,8 @@ default:
 🎮 *\`${usedPrefix + command} antiTwitch\`*  
    ➤ Block Twitch links
 
-🚫 *\`${usedPrefix + command} antinude\`*  
-   ➤ Block adult content and explicit links
+⚠️ *\`${usedPrefix + command} antibot\`*  
+   ➤ Remove bots from groups
 
 > ⚠️ *Bot automatically removes violators* ⚠️
 
@@ -726,12 +750,7 @@ default:
 🤖 *\`${usedPrefix + command} princechat\`* or *\`${usedPrefix}princegpt\`*  
    ➤ Chat with Princebot (ask anything!)
 
-━━━━━━━━━━━━━━【 *EXAMPLES* 】━━━━━━━━━━━━━━
 
-   To toggle features, use *\`${usedPrefix}on\`* or *\`${usedPrefix}off\`*:
-
-   *\`${usedPrefix}on welcome\`*  
-   *\`${usedPrefix}off welcome\`*
 `)
       throw false
 

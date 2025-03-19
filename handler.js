@@ -398,7 +398,22 @@ if (m.chat === specificGroup && m.sender !== allowedSender) {
                 if (m.chat in global.db.data.chats || m.sender in global.db.data.users) {
                     let chat = global.db.data.chats[m.chat]
                     let user = global.db.data.users[m.sender]
-                    if (!['owner-unbanchat.js'].includes(name) && chat && chat.isBanned && !isROwner) return // Except this
+                    if (name != 'owner-unbanchat.js' && chat?.isBanned)
+                        return // Except this
+                        
+                        // Auto-block numbers in the blockNumbers list
+if (global.blockNumbers.includes(m.sender.replace(/[^0-9]/g, ''))) {
+    global.db.data.users[m.sender] = global.db.data.users[m.sender] || {};
+    global.db.data.users[m.sender].banned = true;
+}
+                    if (name != 'owner-unbanuser.js' && user?.banned)
+                        return
+                }
+
+
+
+			
+                /*    if (!['owner-unbanchat.js'].includes(name) && chat && chat.isBanned && !isROwner) return // Except this
                     if (name != 'owner-unbanchat.js' && name != 'owner-exec.js' && name != 'owner-exec2.js' && name != 'tool-delete.js' && chat?.isBanned && !isROwner) return
                     if (m.text && user.banned && !isROwner) {
 		       if (user.antispam > 2) return
@@ -406,7 +421,7 @@ m.reply(`🚫 *YOU ARE BANNED, YOU CAN'T USE THE COMMANDS*\n📑 *REASON: ${user
 user.antispam++	
 return 
 		    }
-		}
+		}*/
                 if (plugin.rowner && plugin.owner && !(isROwner || isOwner)) { // Both Owner
                     fail("owner", m, this)
                     continue
@@ -652,102 +667,91 @@ if (m.fromMe && (global.db.data.settings[this.user.jid]?.ownerreacts)) {
 
 /**
  * Handle groups participants update
- * @param {import('@whiskeysockets/baileys').BaileysEventMap<unknown>['group-participants.update']} groupsUpdate 
+ * @param {import('@adiwajshing/baileys').BaileysEventMap<unknown>['group-participants.update']} groupsUpdate 
  */
 export async function participantsUpdate({ id, participants, action }) {
-    if (opts['self'])
-        return
-    // if (id in conn.chats) return // First login will spam
-    /*if (this.isInit)
-        return*/
-     if (global.db.data == null)
-        await loadDatabase()
-    let chat = global.db.data.chats[id] || {}
-    let text = ''
-    switch (action) {
-        case 'add':
-        case 'remove':
-            if (chat.welcome) {
-                let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
-                for (let user of participants) {
-                    let pp = 'https://i.ibb.co/1ZxrXKJ/avatar-contact.jpg'
-                    let ppgp = 'https://i.ibb.co/1ZxrXKJ/avatar-contact.jpg'
-                    try {
-                        pp = await this.profilePictureUrl(user, 'image')
-                        ppgp = await this.profilePictureUrl(id, 'image')
-                        } finally {
-                        text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user').replace('@group', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'Unknown') :
-                            (chat.sBye || this.bye || conn.bye || 'Goodbye, @user')).replace('@user', '@' + user.split('@')[0])
-                         
-                            let wel = API('fgmods', '/api/welcome', {
-                                username: await this.getName(user),
-                                groupname: await this.getName(id),
-                                groupicon: ppgp,
-                                membercount: groupMetadata.participants.length,
-                                profile: pp,
-                                background: 'https://qu.ax/GHTLH.jpg'
-                            }, 'apikey')
+if (opts['self'])
+return
+// if (id in conn.chats) return // First login will spam
+if (this.isInit)
+return
+if (global.db.data == null)
+await loadDatabase()
+let chat = global.db.data.chats[id] || {}
+let text = ''
+switch (action) {
+case 'add':
+case 'remove':
+if (chat.welcome) {
+let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
+for (let user of participants) {
+let pp = global.gataImg
+try {
+pp = await this.profilePictureUrl(user, 'image')
+} catch (e) {
+} finally {
+let apii = await this.getFile(pp)                                      
+const botTt2 = groupMetadata.participants.find(u => this.decodeJid(u.id) == this.user.jid) || {} 
+const isBotAdminNn = botTt2?.admin === "admin" || false
+text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || '😻 𝗦𝘂𝗽𝗲𝗿 𝗚𝗮𝘁𝗮𝗕𝗼𝘁-𝗠𝗗 😻') :
+(chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
+			    
 
-                            let lea = API('fgmods', '/api/goodbye2', {
-                                username: await this.getName(user),
-                                groupname: await this.getName(id),
-                                groupicon: ppgp,
-                                membercount: groupMetadata.participants.length,
-                                profile: pp,
-                                background: 'https://qu.ax/BOszQ.jpg'
-                            }, 'apikey')
-
-                            this.sendFile(id, action === 'add' ? wel : lea, 'pp.jpg', text, null, false, { mentions: [user] })
-                            //this.sendFile(id, pp, 'pp.jpg', text, null, false, { mentions: [user] })
-                            /*this.sendButton(id, text, mssg.ig, action === 'add' ? wel : lea, [
-                             [(action == 'add' ? '⦙☰ MENU' : 'BYE'), (action == 'add' ? '/help' : 'khajs')], 
-                             [(action == 'add' ? '⏍ RULES' : 'ッ'), (action == 'add' ? '/rules' : ' ')] ], null, {mentions: [user]})*/
-                          
-                    }
-                }
-            }
-            break
-	case 'promote':
-            text = (chat.sPromote || this.spromote || conn.spromote || '@user is now an administrator')
-        case 'demote':
-            let pp = await this.profilePictureUrl(participants[0], 'image').catch(_ => 'https://i.ibb.co/1ZxrXKJ/avatar-contact.jpg') 
-            if (!text)
-                text = (chat.sDemote || this.sdemote || conn.sdemote || '@user is no longer an administrator')
-            text = text.replace('@user', '@' + participants[0].split('@')[0])
-            if (chat.detect)    
-            this.sendFile(id, pp, 'pp.jpg', text, null, false, { mentions: this.parseMention(text) })
-            break
-    }
-}
-
+	
+let fkontak2 = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${user.split('@')[0]}:${user.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }      
+this.sendMessage(id, { text: text, 
+contextInfo:{
+forwardingScore: 9999999,
+isForwarded: true, 
+mentionedJid:[user],
+"externalAdReply": {
+"showAdAttribution": true,
+"renderLargerThumbnail": true,
+"thumbnail": apii.data, 
+"title": 'Prince♥️',
+"containsAutoReply": true,
+"mediaType": 1, 
+sourceUrl: 'https://github.com/DASTAGHIR/PRINCEAI' }}}, { quoted: fkontak2 })
+apii.data = ''
+//this.sendFile(id, apii.data, 'pp.jpg', text, null, false, { mentions: [user] }, { quoted: fkontak2 })
+}}}
+			    
+break
+case 'promote':
+case 'daradmin':
+case 'darpoder':
+text = (chat.sPromote || this.spromote || conn.spromote || '@user ```is now Admin```')
+case 'demote':
+case 'quitarpoder':
+case 'quitaradmin':
+if (!text)
+text = (chat.sDemote || this.sdemote || conn.sdemote || '@user ```is no longer Admin```')
+text = text.replace('@user', '@' + participants[0].split('@')[0])
+if (chat.detect)
+//this.sendMessage(id, { text, mentions: this.parseMention(text) })
+break
+}}
 
 /**
  * Handle groups update
- * @param {import('@whiskeysockets/baileys').BaileysEventMap<unknown>['groups.update']} groupsUpdate 
+ * @param {import('@adiwajshing/baileys').BaileysEventMap<unknown>['groups.update']} groupsUpdate 
  */
-
-global.db = global.db || {}; // Initialize global.db if undefined
-global.db.data = global.db.data || {}; // Initialize global.db.data if undefined
-global.db.data.lastGroupUpdate = global.db.data.lastGroupUpdate || {}; // Initialize lastGroupUpdate
-
 export async function groupsUpdate(groupsUpdate) {
-    if (opts['self']) return;
-    for (const groupUpdate of groupsUpdate) {
-        const id = groupUpdate.id;
-        if (!id) continue;
-        let chats = global.db.data.chats[id];
-        if (!chats?.detect) continue;
-        if (global.db.data.lastGroupUpdate[id] && global.db.data.lastGroupUpdate[id] >= Date.now() - 30000) continue; // Skip updates within 30 seconds
-        global.db.data.lastGroupUpdate[id] = Date.now(); // Update timestamp
-        let text = '';
-        if (groupUpdate.desc) text = (chats.sDesc || this.sDesc || conn.sDesc || 'Description changed to \n@desc').replace('@desc', groupUpdate.desc);
-        if (groupUpdate.subject) text = (chats.sSubject || this.sSubject || conn.sSubject || 'The name of the group changed to \n@group').replace('@group', groupUpdate.subject);
-        if (groupUpdate.icon) text = (chats.sIcon || this.sIcon || conn.sIcon || 'The group icon changed to').replace('@icon', groupUpdate.icon);
-        if (groupUpdate.revoke) text = (chats.sRevoke || this.sRevoke || conn.sRevoke || 'Group link changes to\n@revoke').replace('@revoke', groupUpdate.revoke);
-        if (!text) continue;
-        await this.sendMessage(id, { text, mentions: this.parseMention(text) });
-    }
-}
+if (opts['self'] && !isOwner && !isROwner)
+return
+for (const groupUpdate of groupsUpdate) {
+const id = groupUpdate.id
+if (!id) continue
+let chats = global.db.data?.chats?.[id], text = ''
+if (!chats?.detect) continue
+// if (groupUpdate.desc) text = (chats.sDesc || this.sDesc || conn.sDesc || '```Description has been changed to```\n@desc').replace('@desc', groupUpdate.desc)
+//if (groupUpdate.subject) text = (chats.sSubject || this.sSubject || conn.sSubject || '```Subject has been changed to```\n@subject').replace('@subject', groupUpdate.subject)
+//if (groupUpdate.icon) text = (chats.sIcon || this.sIcon || conn.sIcon || '```Icon has been changed to```').replace('@icon', groupUpdate.icon)
+//if (groupUpdate.revoke) text = (chats.sRevoke || this.sRevoke || conn.sRevoke || '```Group link has been changed to```\n@revoke').replace('@revoke', groupUpdate.revoke)
+if (!text) continue
+await this.sendMessage(id, { text, mentions: this.parseMention(text) })
+}}
+
 
 
 
