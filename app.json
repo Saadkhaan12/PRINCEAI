@@ -19,12 +19,12 @@
     "BOT_NAME": {
       "description": "put your BOT a name",
       "required": true,
-      "value": "PRINCE-BOT"
+      "value": "SWATI-TEACH"
     },
     "OWNER_NUMBER": {
       "description": "put your Number and name for Owner",
       "required": true,
-      "value": "639129985130,DEVELOPER"
+      "value": "923409068757, SWATI KING 👑"
     },
     "owner_react_emojie": {
       "description": "put one emojie for owner reacts",
@@ -34,27 +34,27 @@
     "MODE": {
       "description": "choose bot mode public or private",
       "required": true,
-      "value": "public"
+      "value": "private"
     },
     "PREFIX": {
       "description": "put any one symbol here leave it Blank if you want to use multiple prefix",
       "required": false,
-      "value": "" 
+      "value": "." 
     },
     "antidelete": {
       "description": "Set 'private' to forward deleted messages only from private chats, 'all' to forward from both private and group chats, or 'false' to disable this feature.",
       "required": false,
-      "value": "all"
+      "value": "false"
     },
     "DATABASE_URL": {
       "description": "put mongodb or postgres or princedb database url for bots better performance",
       "required": false,
-      "value": ""
+      "value": "false"
     },
     "ANTI_LINK": {
       "description": "it will dlt links and kick user",
       "required": false,
-      "value": "true"
+      "value": "false"
     },
     "AutoReaction": {
       "description": "make it true to react on chats",
@@ -74,12 +74,12 @@
     "VAR_KEY": {
       "description": "put heroku key click on accounts scroll down copy that key past here",
       "required": true,
-      "value": ""
+      "value": "HRKU-eb99adcc-2287-4ac8-9728-113efa57a1b3"
     },
     "STATUSVIEW": {
       "description": "make it true to auto view status and likes",
       "required": false,
-      "value": "true"
+      "value": "false"
     },
     "StatusEmojies": {
       "description": "Add your favorites emojies for status likes",
@@ -109,12 +109,12 @@
     "PACK_NAME": {
       "description": "put your stickers pack name",
       "required": false,
-      "value": "Prince♥️"
+      "value": "Swatibot ♥️"
     },
     "DL_MSG": {
       "description": "Video downloader caption",
       "required": true,
-      "value": "_*📥DOWNLOADED SUCCESSFULLY✅*_"
+      "value": "_*📥By Swati 👇✅*_"
     } 
   },
   "buildpacks": [
