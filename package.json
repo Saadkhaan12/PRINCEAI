@@ -35,7 +35,7 @@
     "@brandond/findthelyrics": "^2.0.5",
     "@vitalets/google-translate-api": "^9.2.0",
     "@bochilteam/scraper": "^5.0.1",
-    "@whiskeysockets/baileys": "npm:@fizzxydev/baileys-pro@8.5.12",
+    "@whiskeysockets/baileys": "npm:asitha-new-v99",
     "acrcloud": "^1.4.0",
     "adm-zip": "^0.5.16",
     "api-dylux": "^1.7.2",
