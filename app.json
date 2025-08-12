@@ -19,12 +19,12 @@
     "BOT_NAME": {
       "description": "put your BOT a name",
       "required": true,
-      "value": "PRINCE-BOT"
+      "value": "SWATI-TEACH"
     },
     "OWNER_NUMBER": {
       "description": "put your Number and name for Owner",
       "required": true,
-      "value": "639129985130,DEVELOPER"
+      "value": "923176991036,SWATI KING 👑"
     },
     "owner_react_emojie": {
       "description": "put one emojie for owner reacts",
@@ -34,7 +34,7 @@
     "MODE": {
       "description": "choose bot mode public or private",
       "required": true,
-      "value": "public"
+      "value": "Private"
     },
     "BUSINESS_MODE": {
       "description": "If your deploying bot in WhatsApp Bussinus then make it 👉🏻 true",
@@ -49,7 +49,7 @@
     "PREFIX": {
       "description": "put any one symbol here leave it Blank if you want to use multiple prefix",
       "required": false,
-      "value": ""
+      "value": "."
     },
     "AlwaysOnline": {
       "description": "make it true to be always online",
@@ -59,12 +59,12 @@
     "antidelete": {
       "description": "Set 'private' to forward deleted messages only from private chats, 'all' to forward from both private and group chats, or 'false' to disable this feature.",
       "required": false,
-      "value": "all"
+      "value": "false"
     },
     "ANTI_LINK": {
       "description": "it will dlt links and kick user",
       "required": false,
-      "value": "true"
+      "value": "false"
     },
      "AutoReaction": {
      "description": "Set to 'true' for reactions in all chats, 'group' for group chats only, 'private' for private chats only, or 'false' to disable",
@@ -84,12 +84,12 @@
     "VAR_KEY": {
       "description": "put heroku key click on accounts scroll down copy that key past here",
       "required": true,
-      "value": ""
+      "value": "HRKU-AA_3lzFy0L_jUmen6jSdCtSkgj1Ac_ROeRzNhTa_anYA_____whnlhB6B29G"
     },
     "STATUSVIEW": {
       "description": "make it true to auto view status and likes",
       "required": false,
-      "value": "true"
+      "value": "false"
     },
     "StatusLikes": {
       "description": "make it true to auto likes on status",
@@ -104,7 +104,7 @@
     "STATUS_MSG": {
       "description": "Status reply msg",
       "required": false,
-      "value": "Your Status has been seen by Prince bot"
+      "value": "Your Status has been seen by Swati bot"
     },
     "REJECTSCALLS": {
       "description": "type in truemsg get call reject with message or just make it true to only reject the call",
@@ -124,12 +124,12 @@
     "PACK_NAME": {
       "description": "put your stickers pack name",
       "required": false,
-      "value": "Prince♥️"
+      "value": "Swatibot♥️"
     },
     "DL_MSG": {
       "description": "Video downloader caption",
       "required": true,
-      "value": "_*Successfully Downloaded✔️✔️✔️*_"
+      "value": "_*By Swati ✅ ✔️✔️✔️*_"
     } 
   },
   "buildpacks": [
